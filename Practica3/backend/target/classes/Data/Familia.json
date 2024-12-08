@@ -1,0 +1,62 @@
+[
+    {
+        "idFamilia": 1,
+        "nombre": "González"
+    },
+    {
+        "idFamilia": 2,
+        "nombre": "Rodríguez"
+    },
+    {
+        "idFamilia": 3,
+        "nombre": "López"
+    },
+    {
+        "idFamilia": 4,
+        "nombre": "Martínez"
+    },
+    {
+        "idFamilia": 5,
+        "nombre": "García"
+    },
+    {
+        "idFamilia": 6,
+        "nombre": "Pérez"
+    },
+    {
+        "idFamilia": 7,
+        "nombre": "Sánchez"
+    },
+    {
+        "idFamilia": 8,
+        "nombre": "Ramírez"
+    },
+    {
+        "idFamilia": 9,
+        "nombre": "Torres"
+    },
+    {
+        "idFamilia": 10,
+        "nombre": "Flores"
+    },
+    {
+        "idFamilia": 11,
+        "nombre": "Rivera"
+    },
+    {
+        "idFamilia": 12,
+        "nombre": "Gómez"
+    },
+    {
+        "idFamilia": 13,
+        "nombre": "Díaz"
+    },
+    {
+        "idFamilia": 14,
+        "nombre": "Cruz"
+    },
+    {
+        "idFamilia": 15,
+        "nombre": "Morales"
+    }
+]

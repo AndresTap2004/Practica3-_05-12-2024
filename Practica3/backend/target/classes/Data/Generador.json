@@ -1,0 +1,137 @@
+[
+    {
+        "idGenerador": 1,
+        "nombre": "A212",
+        "codigo": "NE122",
+        "costo": 200.0,
+        "consumoPorHora": 100.0,
+        "potencia": 200,
+        "uso": "Deportivo"
+    },
+    {
+        "idGenerador": 2,
+        "nombre": "A354",
+        "codigo": "NE123",
+        "costo": 400.0,
+        "consumoPorHora": 100.0,
+        "potencia": 700,
+        "uso": "Familiar"
+    },
+    {
+        "idGenerador": 3,
+        "nombre": "Referes",
+        "codigo": "NE124",
+        "costo": 1233.0,
+        "consumoPorHora": 1231.0,
+        "potencia": 121,
+        "uso": "Comercial"
+    },
+    {
+        "idGenerador": 4,
+        "nombre": "orax",
+        "codigo": "NE125",
+        "costo": 1000.0,
+        "consumoPorHora": 100.0,
+        "potencia": 100,
+        "uso": "10012312"
+    },
+    {
+        "idGenerador": 5,
+        "nombre": "B123",
+        "codigo": "NE126",
+        "costo": 500.0,
+        "consumoPorHora": 150.0,
+        "potencia": 300,
+        "uso": "Industrial"
+    },
+    {
+        "idGenerador": 6,
+        "nombre": "C456",
+        "codigo": "NE127",
+        "costo": 600.0,
+        "consumoPorHora": 200.0,
+        "potencia": 400,
+        "uso": "Residencial"
+    },
+    {
+        "idGenerador": 7,
+        "nombre": "D789",
+        "codigo": "NE128",
+        "costo": 700.0,
+        "consumoPorHora": 250.0,
+        "potencia": 500,
+        "uso": "Agrícola"
+    },
+    {
+        "idGenerador": 8,
+        "nombre": "E012",
+        "codigo": "NE129",
+        "costo": 800.0,
+        "consumoPorHora": 300.0,
+        "potencia": 600,
+        "uso": "Marítimo"
+    },
+    {
+        "idGenerador": 9,
+        "nombre": "F345",
+        "codigo": "NE130",
+        "costo": 900.0,
+        "consumoPorHora": 350.0,
+        "potencia": 700,
+        "uso": "Aéreo"
+    },
+    {
+        "idGenerador": 10,
+        "nombre": "G678",
+        "codigo": "NE131",
+        "costo": 1000.0,
+        "consumoPorHora": 400.0,
+        "potencia": 800,
+        "uso": "Minero"
+    },
+    {
+        "idGenerador": 11,
+        "nombre": "H901",
+        "codigo": "NE132",
+        "costo": 1100.0,
+        "consumoPorHora": 450.0,
+        "potencia": 900,
+        "uso": "Petrolero"
+    },
+    {
+        "idGenerador": 12,
+        "nombre": "I234",
+        "codigo": "NE133",
+        "costo": 1200.0,
+        "consumoPorHora": 500.0,
+        "potencia": 1000,
+        "uso": "Forestal"
+    },
+    {
+        "idGenerador": 13,
+        "nombre": "J567",
+        "codigo": "NE134",
+        "costo": 1300.0,
+        "consumoPorHora": 550.0,
+        "potencia": 1100,
+        "uso": "Construcción"
+    },
+    {
+        "idGenerador": 14,
+        "nombre": "K890",
+        "codigo": "NE135",
+        "costo": 1400.0,
+        "consumoPorHora": 600.0,
+        "potencia": 1200,
+        "uso": "Emergencia"
+    },
+    {
+        "idGenerador": 15,
+        "nombre": "L123",
+        "codigo": "NE136",
+        "costo": 1500.0,
+        "consumoPorHora": 650.0,
+        "potencia": 1300,
+        "uso": "Emergencia"
+    }
+]

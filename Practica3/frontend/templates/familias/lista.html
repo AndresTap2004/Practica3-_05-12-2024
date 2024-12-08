@@ -1,0 +1,184 @@
+{% extends 'template.html' %} {% block content %}
+<div class="container mx-auto mt-8 p-6 bg-gray-600 rounded-lg shadow-lg">
+    <h1 class="text-4xl font-extrabold text-white">Listado de Familias</h1>
+
+    <div class="flex flex-wrap items-center gap-6 mb-6">
+        <div class="flex flex-wrap items-center gap-4">
+            <label for="metd-ordenar" class="form-label text-white"
+                >Ordenar por:</label
+            >
+            <select
+                id="metd-ordenar"
+                class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg"
+            >
+                {% for method in ["QuickSort", "ShellSort", "MergeSort"] %}
+                <option value="{{ method }}">{{ method }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="flex flex-wrap items-center gap-4">
+            <label for="att-buscar" class="form-label text-white"
+                >Buscar en:</label
+            >
+            <select
+                id="att-buscar"
+                class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg"
+            >
+                <option value="nombre">Nombre</option>
+            </select>
+            <input
+                id="txt-buscar"
+                type="text"
+                placeholder="Buscar..."
+                class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg"
+            />
+            <button
+                class="bg-blue-500 text-white px-4 py-2 rounded-lg btn-buscar"
+            >
+                Buscar
+            </button>
+            <button
+                class="bg-gray-400 text-black px-4 py-2 rounded-lg btn-limpiar flex items-center gap-2"
+            >
+                🔄 Limpiar
+            </button>
+        </div>
+        <a
+            href="/familias/register"
+            class="bg-purple-600 text-white px-4 py-2 rounded-lg"
+            >Agregar Nueva Familia</a
+        >
+    </div>
+
+    <table class="min-w-full bg-gray-800 rounded-lg shadow-md">
+        <thead class="bg-gray-900 text-white">
+            <tr>
+                <th class="text-center">Nro</th>
+                <th class="text-center">
+                    Nombre
+                    <button
+                        class="btn-ordenar ml-2"
+                        data-sort-order="0"
+                        data-sort-field="nombre"
+                    >
+                        🔃
+                    </button>
+                </th>
+                <th class="text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if list %} {% for item in list %}
+            <tr class="text-center" id="row-{{ item.idFamilia }}">
+                <td>{{ loop.index }}</td>
+                <td>{{ item.nombre }}</td>
+                <td>
+                    <a
+                        href="/familias/edit/{{ item.idFamilia }}"
+                        class="bg-blue-600 text-white px-2 py-1 rounded-lg"
+                        >Modificar</a
+                    >
+                    <button
+                        class="bg-red-600 text-white px-2 py-1 rounded-lg"
+                        onclick="deleteRow({{ item.idFamilia }})"
+                    >
+                        Eliminar
+                    </button>
+                </td>
+            </tr>
+            {% endfor %} {% else %}
+            <tr>
+                <td colspan="3" class="text-center">
+                    No hay familias registradas.
+                </td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // Función para manejar la ordenación de la tabla
+    const ordenarFamilias = async (button) => {
+        const sortField = button.dataset.sortField;
+        let sortOrder = button.dataset.sortOrder === "0" ? "1" : "0";
+        button.dataset.sortOrder = sortOrder;
+
+        try {
+            const response = await fetch("/familia/ordenar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    atributo: sortField,
+                    orden: sortOrder,
+                    metodo: document.getElementById("metd-ordenar").value,
+                }),
+            });
+            const data = await response.json();
+            actualizarTabla(data);
+        } catch (error) {
+            console.error("Error al ordenar familias:", error);
+        }
+    };
+
+    const buscarFamilias = async () => {
+        const searchField = document.getElementById("txt-buscar").value;
+        const searchAttr = document.getElementById("att-buscar").value;
+
+        try {
+            const response = await fetch("/familia/buscar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ searchField, searchAttr }),
+            });
+            const data = await response.json();
+            actualizarTabla(data);
+        } catch (error) {
+            console.error("Error al buscar familias:", error);
+        }
+    };
+
+    const limpiarBusqueda = async () => {
+        document.getElementById("txt-buscar").value = "";
+        document.getElementById("att-buscar").value = "nombre";
+
+        try {
+            const response = await fetch("/familia/limpiar", { method: "GET" });
+            const data = await response.json();
+            actualizarTabla(data);
+        } catch (error) {
+            console.error("Error al limpiar la búsqueda:", error);
+        }
+    };
+
+    const actualizarTabla = (data) => {
+        const tbody = document.querySelector("tbody");
+        tbody.innerHTML = data
+            .map(
+                (item) => `
+            <tr class="text-center">
+                <td>${item.idFamilia}</td>
+                <td>${item.nombre}</td>
+                <td>
+                    <a href="/familias/edit/${item.idFamilia}" class="bg-blue-600 text-white px-2 py-1 rounded-lg">Modificar</a>
+                    <button class="bg-red-600 text-white px-2 py-1 rounded-lg" onclick="deleteRow(${item.idFamilia})">Eliminar</button>
+                </td>
+            </tr>
+        `
+            )
+            .join("");
+    };
+
+    document.querySelectorAll(".btn-ordenar").forEach((button) => {
+        button.addEventListener("click", () => ordenarFamilias(button));
+    });
+
+    document
+        .querySelector(".btn-buscar")
+        .addEventListener("click", buscarFamilias);
+    document
+        .querySelector(".btn-limpiar")
+        .addEventListener("click", limpiarBusqueda);
+</script>
+
+{% endblock %}
